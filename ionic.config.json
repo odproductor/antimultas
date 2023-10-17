@@ -1,0 +1,7 @@
+{
+  "name": "capitan_antimultas",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

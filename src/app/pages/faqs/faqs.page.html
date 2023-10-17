@@ -1,0 +1,21 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab3" text="Volver"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      <img src="assets/img/logo-min.png" alt="">
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- Add a page of detail of faq -->
+  <div class="text">
+    <div class="title">
+      {{question.title}}
+    </div>
+    <div class="description" [innerHTML]="question.des">
+    </div>
+  </div>
+</ion-content>

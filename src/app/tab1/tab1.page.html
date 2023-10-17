@@ -1,0 +1,95 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      <img src="assets/img/logo-min.png" alt="">
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="slides">
+    <swiper-container [options]="slideOpts">
+      <swiper-slide>
+        <div class="img">
+          <img src="assets/img/slides/1.jpg" alt="">
+        </div>
+      </swiper-slide>
+      <swiper-slide>
+        <div class="img">
+          <img src="assets/img/slides/2.jpg" alt="">
+        </div>
+      </swiper-slide>
+    </swiper-container>
+  </div>
+
+  <div class="alertfoto">
+    <div class="atencion">
+      <img src="assets/img/atencion.png" alt="">
+    </div>
+    <div class="msg" *ngIf="!isFotomulta">
+      <b>Si</b> hay fotomultas <b>HOY</b>
+    </div>
+    <div class="msg" *ngIf="isFotomulta">
+      <b>No</b> hay fotomultas <b>HOY</b>
+    </div>
+  </div>
+
+  <div class="line-separator"></div>
+
+  <div class="map" *ngIf="enabled">
+    <div class="title">
+      Tu ubicación
+    </div>
+    <div id="map">
+      <img src="https://maps.googleapis.com/maps/api/staticmap?center={{lat}},{{lng}}&zoom=18&size=600x200&maptype=roadmap&markers=color:red%7Clabel:YO%7C{{lat}},{{lng}}&key=AIzaSyDBuBfixcvfxmRdACJEiyb3tqw8PeCjM8I" alt="">
+    </div>
+    <div class="title">
+      Fotomultas Cerca
+    </div>
+    <div class="alert" *ngIf="isNear">
+      <div class="img"><img src="assets/img/alert.gif" alt=""></div>
+      <div class="msg">Hay una fotomulta cerca</div>
+    </div>
+    <div class="title">
+      Fotomultas Registradas Hoy
+    </div>
+    <div class="list">
+      <ion-list>
+        <ion-item *ngFor="let item of fotoMultas">
+          <ion-icon name="camera-outline" slot="start"></ion-icon>
+          <ion-label>{{item.name}}</ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+
+  <div class="line-separator"></div>
+
+  <div class="pico">
+    <div class="placa-carro">
+      <div class="numero">
+        <b>Pico y placa {{ actualPicoYPlaca.title}} CÚCUTA</b>
+        <br>TERMINAN EN
+      </div>
+      <div class="separator"></div>
+      <div class="letters">{{actualPicoYPlaca.number}}</div>
+    </div>
+  </div>
+  
+  <div class="line-separator"></div>
+
+  <div class="faqs">
+    <ion-list>
+      <ion-list-header>
+        <ion-label>Preguntas Destacadas</ion-label>
+      </ion-list-header>
+      <ion-card *ngFor="let item of questionListFeatured">
+        <ion-item (click)="showAnswer(item)">
+          <ion-icon name="help-circle-outline" slot="start"></ion-icon>
+          <ion-label>{{item.title}}</ion-label>
+        </ion-item>
+      </ion-card>
+    </ion-list>
+  </div>
+
+</ion-content>
